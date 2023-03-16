@@ -1,15 +1,17 @@
 
+//query and queryselectorall
 
-let additems=document.getElementsByClassName("list-group-item");
-additems[2].style.backgroundColor="green";
-for(let i=0;i<additems.length;i++){
-    additems[i].style.fontWeight="bold";
-    additems[i].style.color="red";//boom boom didnt turn into red.
+let listitem=document.querySelector(".list-group-item:nth-child(2)");
+listitem.style.backgroundColor="green";
+
+let listitem1=document.querySelector(".list-group-item:nth-child(3)");
+listitem1.style.color="white";
+
+let listitem2=document.querySelectorAll("li");
+listitem2[1].style.color="green";
+
+let listitem3=document.querySelectorAll("li:nth-child(odd)");
+for(let i=0;i<listitem3.length;i++){
+    listitem3[i].style.backgroundColor="green";
 }
 
-
-// let li=document.getElementsByTagName("li");
-// for(let i=0;i<li.length;i++){
-//     li[i].style.fontWeight="bold";
-//     li[i].style.color="red";//all li tags turns red including boom boom;
-// }
