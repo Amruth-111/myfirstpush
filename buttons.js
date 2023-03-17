@@ -1,23 +1,32 @@
 let form=document.getElementById("addForm");
 var itemLister=document.getElementById("items");
+let filter=document.getElementById("filter");
+
+
  
 form.addEventListener("submit",addItem);
 itemLister.addEventListener("click",removeitem);
+filter.addEventListener("keyup",filterList);
 //add item
 function addItem(event){
     //prevent default nature
     event.preventDefault();
-
+    //
     //take input value
     let item=document.getElementById("item").value;
-    console.log(item);
+    let item2=document.getElementById("itemm").value;
+    
     //create a new li
     let itemLi=document.createElement("li");
     //create a text node
     itemLi.className="list-group-item";
     let itemText=document.createTextNode(item);
+    let itemText2=document.createTextNode(item2);
+    
     //add the text node to the li
     itemLi.appendChild(itemText);
+
+    itemLi.appendChild(itemText2);
 
 
     //create a delete button
@@ -30,6 +39,7 @@ function addItem(event){
     
     //add the li to the ul
     itemLister.appendChild(itemLi);
+    addEdit(itemLi);
   
 }
 function removeitem(e){
@@ -39,16 +49,34 @@ function removeitem(e){
     }
 }
 
-let list=document.querySelectorAll(".container:nth-child(2) .list-group-item");
-console.log(list[0]);
-//let ul=document.querySelectorAll("li:nth-child(odd)");
-let edit=document.createElement("button");
-edit.className="btn btn-primary float-right";
-edit.appendChild(document.createTextNode("edit"));
-
-// console.log(ul);
-let itemlLister=document.getElementById("items");
-// console.log(itemlLister);
-for(let i=0; i<list.length; i++) {
-    list[i].appendChild(edit);
+let list=document.getElementById("items");
+let lis=list.children;
+console.log(list);
+console.log(lis);
+function addEdit(li){
+    let btn=document.createElement("button");
+    btn.className="btn btn-primary float-right";
+    btn.appendChild(document.createTextNode("edit"));
+    li.appendChild(btn);
+    return li;
 }
+
+for(let i=0; i<lis.length; i++) {
+    addEdit(lis[i]);
+}
+
+function filterList(e) {
+    let filterValue=e.target.value.toLowerCase();
+    let lis=list.children;
+    for(let i=0; i<lis.length; i++) {
+        let li=lis[i];
+        if(li.textContent.toLowerCase().indexOf(filterValue)>-1){
+            li.style.display="block";
+        }else{
+            li.style.display="none";
+        }
+    }
+}
+
+
+
