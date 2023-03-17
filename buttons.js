@@ -1,9 +1,6 @@
 let form=document.getElementById("addForm");
 var itemLister=document.getElementById("items");
  
-
-
-
 form.addEventListener("submit",addItem);
 itemLister.addEventListener("click",removeitem);
 //add item
@@ -49,10 +46,6 @@ let edit=document.createElement("button");
 edit.className="btn btn-primary float-right";
 edit.appendChild(document.createTextNode("edit"));
 
-console.log(edit);
-list[0].append(edit);
-list[2].append(edit);
-list[1].append(edit);
 // console.log(ul);
 let itemlLister=document.getElementById("items");
 // console.log(itemlLister);
