@@ -9,6 +9,7 @@ const userList = document.querySelector('#users');
 myForm.addEventListener('submit', onSubmit);
 userList.addEventListener('click',removeitem);
 
+
 function onSubmit(e) {
   e.preventDefault();
 
@@ -24,15 +25,30 @@ function onSubmit(e) {
     del.appendChild(document.createTextNode('Delete'));
     del.className='delete';
 
+    let edit=document.createElement('button');
+    edit.appendChild(document.createTextNode('Edit'));
+    edit.className='delete';
+    edit.id="edit";
+    //edit.addEventListener('click',edititem);
+    function edititem(){
+        nameInput.value="";
+        emailInput.value="";
+      
+    }
+    
+
+
     let li= document.createElement('li');
     li.classList.add('list-group-item');
     
     li.appendChild(document.createTextNode(`${nameInput.value}: ${emailInput.value}`));
     li.appendChild(del);
+    li.appendChild(edit);
+
     //li.innerHTML = `Name: ${nameInput.value} <br> Email: ${emailInput.value}`;
     userList.appendChild(li);
 
- 
+    
        
     }
     let obj={
@@ -46,10 +62,7 @@ function onSubmit(e) {
    
     // localStorage.setItem("name",nameInput.value);
     // localStorage.setItem("email",emailInput.value);
-
-    nameInput.value = '';
-    emailInput.value = '';
-
+    edititem();
     
   }
   
@@ -65,6 +78,8 @@ function onSubmit(e) {
         localStorage.removeItem(obj.email,abc);
     }
 }
+
+
 
 
   
