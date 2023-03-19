@@ -20,13 +20,28 @@ function onSubmit(e) {
     setTimeout(() => msg.remove(), 3000);
   } else {
 
+    let li= document.createElement('li');
+    li.classList.add('list-group-item');
+    li.appendChild(document.createTextNode(`${nameInput.value}: ${emailInput.value}`));
+
+    li.innerHTML = `Name: ${nameInput.value} <br> Email: ${emailInput.value}`;
+    userList.appendChild(li);
+  
     let obj={
         name: nameInput.value,
         email: emailInput.value
     }
 
     let abc=JSON.stringify(obj)
-    localStorage.setItem("obj1",abc);
+    localStorage.setItem(obj.email,abc);
+    showUserOnScreen(obj);
+   
+    localStorage.setItem("name",nameInput.value);
+    localStorage.setItem("email",emailInput.value);
+
+    nameInput.value = '';
+    emailInput.value = '';
+
     
   }
 
