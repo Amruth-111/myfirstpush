@@ -38,4 +38,5 @@ async function fun1(){
     const msg3=await manalifood();
     console.log(msg3);
 }
+
 fun1();
