@@ -27,7 +27,7 @@ function onSubmit(e) {
 
     let edit=document.createElement('button');
     edit.appendChild(document.createTextNode('Edit'));
-    edit.className='delete';
+    edit.className='edit';
     edit.id="edit";
     //edit.addEventListener('click',edititem);
     function edititem(){
@@ -35,9 +35,6 @@ function onSubmit(e) {
         emailInput.value="";
       
     }
-    
-
-
     let li= document.createElement('li');
     li.classList.add('list-group-item');
     
@@ -47,8 +44,6 @@ function onSubmit(e) {
 
     //li.innerHTML = `Name: ${nameInput.value} <br> Email: ${emailInput.value}`;
     userList.appendChild(li);
-
-    
        
     }
     let obj={
@@ -56,9 +51,12 @@ function onSubmit(e) {
         email: emailInput.value
     }
 
-    let abc=JSON.stringify(obj)
-    localStorage.setItem(obj.email,abc);
-    showUserOnScreen(obj);
+    axios.post("https://crudcrud.com/api/e87493c5a8bb4609899244b264ed4499/empdetails",obj)
+    .then((res)=>console.log(res))
+    .catch((err)=>console.log(err));
+    // let abc=JSON.stringify(obj)
+    // localStorage.setItem(obj.email,abc);
+    // showUserOnScreen(obj);
    
     // localStorage.setItem("name",nameInput.value);
     // localStorage.setItem("email",emailInput.value);
